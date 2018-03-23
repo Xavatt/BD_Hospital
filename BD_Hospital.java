@@ -7,6 +7,7 @@ public class BD_Hospital
     {
         System.out.println("GitHub nueva rama");
         System.out.println("Sergio, ultima prueba");
+        System.out.println("Xavier, ultima prueba");
     }
 
 }
