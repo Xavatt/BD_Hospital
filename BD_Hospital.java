@@ -12,9 +12,9 @@ import javax.swing.JComboBox;
 
 public class BD_Hospital extends JFrame implements ActionListener
 {
-  /**
-   * Definir atributos que se van a ocupar
-   */
+    /**
+    * Definir atributos que se van a ocupar
+    */
     private JButton bCapturarDoctor,bCapturarPaciente,bConsultarPacientes;
     private JButton bConsultarEspecialidad,bConsultarDoctores,bSalir;
     private JButton bConsultarAnalisis, bCapturarAnalisis;
