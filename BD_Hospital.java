@@ -8,12 +8,41 @@ import javax.swing.JComboBox;
 
 public class BD_Hospital extends JFrame implements ActionListener
 {
-    private JButton bCapturarDoctor,bCapturaPaciente,bConsultaPacientes;
+    private JButton bCapturarDoctor,bCapturarPaciente,bConsultarPacientes;
     private JButton bConsultarEspecialidad,bConsultarDoctores,bSalir;
+    private JButton bConsultarAnalisis, bCapturarAnalisis;
+    private JPanel panel1, panel2;
+    private JTextArea taDatos;
 
     public Hospital()
     {
         super("Hospital");
+
+        /**
+         * 1.- Crear los objetos de los atributos
+         */
+        bCapturarDoctor = new JButton("Capturar Doctor");
+        bCapturarPaciente = new JButton("Capturar Paciente");
+        bCapturarAnalisis = new JButton("Capturar Analisis");
+        bConsultarPacientes = new JButton("Consultar Pacientes");
+        bConsultarDoctores = new JButton("Consultar Doctores");
+        bConsultarEspecialidad = new JButton("Consultar Especialidades");
+        bConsultarAnalisis = new JButton("Consultar Analisis");
+        bSalir = new JButton("Salir");
+
+        panel1 = new JPanel();
+        panel2 = new JPanel();
+
+        taDatos = new JTextArea(25,35);
+
+        bCapturarDoctor.addActionListener(this);
+        bCapturarPaciente.addActionListener(this);
+        bCapturarAnalisis.addActionListener(this);
+        bConsultarPacientes.addActionListener(this);
+        bConsultarDoctores.addActionListener(this);
+        bConsultarEspecialidad.addActionListener(this);
+        bConsultarAnalisis.addActionListener(this);
+        bSalir.addActionListener(this);
     }
 
     public static void main(String[] args)
