@@ -1,12 +1,21 @@
 package bd_hospital;
 
-public class BD_Hospital
+import java.swing.*;
+import java.awt.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+
+
+public class BD_Hospital extends JFrame implements ActionListener
 {
+    public Hospital()
+    {
+        super("Hospital");
+    }
 
     public static void main(String[] args)
     {
-        System.out.println("GitHub nueva rama");
-        System.out.println("Sergio, ultima prueba");      
+
     }
 
 }
