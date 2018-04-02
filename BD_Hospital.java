@@ -8,6 +8,9 @@ import javax.swing.JComboBox;
 
 public class BD_Hospital extends JFrame implements ActionListener
 {
+    private JButton bCapturarDoctor,bCapturaPaciente,bConsultaPacientes;
+    private JButton bConsultarEspecialidad,bConsultarDoctores,bSalir;
+
     public Hospital()
     {
         super("Hospital");
