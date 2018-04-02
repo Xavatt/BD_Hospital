@@ -43,6 +43,15 @@ public class BD_Hospital extends JFrame implements ActionListener
         bConsultarEspecialidad.addActionListener(this);
         bConsultarAnalisis.addActionListener(this);
         bSalir.addActionListener(this);
+
+        /**
+         * 2.- Definir los Layouts de los JPanels
+         */
+         panel1.setLayout(new GridLayout(13,2));
+         panel2.setLayout(new FlowLayout());
+         /**
+          * 3.- Colocar los objetos de los atributos en los JPanels correspondientes
+          */
     }
 
     public static void main(String[] args)
