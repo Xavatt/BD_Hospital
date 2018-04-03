@@ -142,7 +142,13 @@ public class DoctorGUI extends JFrame implements ActionListener
 
       if (e.getSource() == bConsultarEspecialidad)
       {
-
+          String especialidad = tfEspecialidad.getText();
+          respuesta = hospitalad.consultarEspecialidad(especialidad);
+          if(respuesta.equals("VACIO"))
+          {
+            respuesta = "Especialidad no encontrada"+especialidad;
+          }
+          taDatos.setText(respuesta);
       }
 
       if (e.getSource() == bSalir)

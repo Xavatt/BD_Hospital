@@ -42,13 +42,13 @@ public class HospitalAD
             System.out.println("Error 4: "+sqle);
         }
     }
-    
-      public String capturarDoctor(String datos){ 
+
+      public String capturarDoctor(String datos){
         //System.out.println("\nAD: "+datos);
         doctordp = new DoctorDP(datos);
         String query = "INSERT INTO DOCTOR VALUES("+doctordp.toStringSql()+")";
 
-        try {  
+        try {
             statement = conexion.createStatement();
             statement.executeUpdate(query);
             statement.close();
@@ -60,26 +60,26 @@ public class HospitalAD
         }
         return datos;
 }
-    
+
       public String consultarDoctores()
     {
         String datos="";
-        ResultSet tr;        
+        ResultSet tr;
         String query = "SELECT * FROM doctor";
-        
+
         try
         {
             // 1. Abrir el archivo de datos o BD
             statement = conexion.createStatement();
-            
+
             // Ejecutar Query
             tr = statement.executeQuery(query);
-            
+
             // 2. Procesar los datos en el archivo
-                   
+
             doctordp = new DoctorDP();
             while(tr.next())
-            {                              
+            {
                 doctordp.setClave(tr.getString("clave"));
                 doctordp.setNombre(tr.getString("nombre"));
                 doctordp.setEspecialidad(tr.getString("especialidad"));
@@ -87,19 +87,51 @@ public class HospitalAD
                 doctordp.setTelefono(tr.getString("telefono"));
                 datos = datos + doctordp.toString() + "\n";
             }
-            
             // 3. Cerrar el archivo
-           
             statement.close();
             tr.close();
-            
             System.out.println(query);
         }
         catch(SQLException sqle)
         {
             datos = "Error: "+sqle;
         }
-        
         return datos;
     }
+
+    public String consultarEspecialidad(String tipo)
+  	{
+  		String datos="";
+  		String query="";
+  		ResultSet resultante = null;
+  		query="SELECT * FROM CLIENTE WHERE ESPECIALIDAD = '"+especialidad+"'";
+
+  		try
+  		{
+  			statement = conexion.createStatement();
+
+  			resultante = statement.executeQuery(query);
+
+  			 doctordp = new DoctorDP();
+  			while(tr.next())
+  			{
+          doctordp.setClave(tr.getString("clave"));
+          doctordp.setNombre(tr.getString("nombre"));
+          doctordp.setEspecialidad(tr.getString("especialidad"));
+          doctordp.setDireccion(tr.getString("direccion"));
+          doctordp.setTelefono(tr.getString("telefono"));
+          datos = datos + doctordp.toString() + "\n";
+  			}
+
+  			statement.close();
+  			System.out.println(query);
+  		}
+  		catch(SQLException sql)
+  		{
+  			System.out.println("Error: "+sql);
+  			datos = "Error en lectura de base datos...";
+  		}
+
+  		return datos;
+  	}
 }
