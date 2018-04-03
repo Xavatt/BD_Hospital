@@ -16,6 +16,16 @@ public class AnalisisDP
       this.noPaciente = "";
     }
 
+    public AnalisDP(String datos)
+    {
+        StringTokenizer st = new StringTokenizer(datos, "_");
+        tipo = st.nextToken();
+        descripcion = st.nextToken();
+        fechaAplicacion = st.nextToken();
+        fechaEntrega = st.nextToken();
+        noPaciente = st.nextToken();
+    }
+
     public String getTipo() {
         return tipo;
     }
