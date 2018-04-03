@@ -99,7 +99,7 @@ public class HospitalAD
         return datos;
     }
 
-    public String consultarEspecialidad(String tipo)
+    public String consultarEspecialidad(String especialidad)
   	{
   		String datos="";
   		String query="";
