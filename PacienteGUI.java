@@ -65,10 +65,10 @@ public class PacienteGUI extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
     }
     
-    public static void main(String[] args)
-    {
-        new PacienteGUI();
-    }
+//    public static void main(String[] args)
+//    {
+//        new PacienteGUI();
+//    }
     
     
 }
