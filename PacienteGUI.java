@@ -3,14 +3,9 @@ package bd_hospital;
  * Librerias
  */
 
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+ import javax.swing.*;
+ import java.awt.*;
+ import java.awt.event.*;
 
 
 public class PacienteGUI extends JFrame implements ActionListener
