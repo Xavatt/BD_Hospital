@@ -7,7 +7,7 @@ public class AnalisisDP
 
     private String tipo, descripcion, fechaAplicacion, fechaEntrega,noPaciente;
 
-    public AnalisDP()
+    public AnalisisDP()
     {
       this.tipo = "";
       this.descripcion = "";
@@ -16,7 +16,7 @@ public class AnalisisDP
       this.noPaciente = "";
     }
 
-    public AnalisDP(String datos)
+    public AnalisisDP(String datos)
     {
         StringTokenizer st = new StringTokenizer(datos, "_");
         tipo = st.nextToken();
