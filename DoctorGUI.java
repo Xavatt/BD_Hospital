@@ -18,6 +18,8 @@ public class DoctorGUI extends JFrame implements ActionListener
     private JPanel panel1, panel2;
     private JTextArea taDatos;
 
+    private HospitalAD hospitalad = new HospitalAD();
+
     public DoctorGUI()
     {
       super("Doctor");
@@ -94,11 +96,37 @@ public class DoctorGUI extends JFrame implements ActionListener
 
     }
 
+    private String obtenerDatos()
+    {
+      String datos= "";
+      String clave = tfClave.getText();
+      String nombre = tfNombre.getText();
+      String especialidad = tfEspecialidad.getText();
+      String direccion = tfDireccion.getText();
+      String telefono = tfTelefono.getText();
+
+      if(clave.equals("") || nombre.equals("") || especialidad.equals("") || direccion.equals("") || telefono.equals(""))
+        datos = "VACIO";
+        else
+        {
+            datos = clave+"_"+nombre+"_"+especialidad+"_"+direccion+"_"+telefono;
+        }
+        return datos;
+    }
+
     public void actionPerformed(ActionEvent e)
     {
+      String datos,respuesta;
       if (e.getSource() == bCapturar)
       {
-
+        datos = obtenerDatos();
+        if(datos.equals("VACIO"))
+          respuesta = "Algun campo esta vacio...";
+        else
+        {
+            respuesta = hospitalad.capturarDoctor(datos);
+        }
+        taDatos.setText(respuesta);
       }
 
       if (e.getSource() == bConsultar)
