@@ -103,28 +103,28 @@ public class HospitalAD
   	{
   		String datos="";
   		String query="";
-  		ResultSet resultante = null;
-  		query="SELECT * FROM CLIENTE WHERE ESPECIALIDAD = '"+especialidad+"'";
+  		ResultSet tr = null;
+  		query="SELECT * FROM Doctor WHERE ESPECIALIDAD = '"+especialidad+"'";
 
   		try
   		{
-  			statement = conexion.createStatement();
+                    statement = conexion.createStatement();
 
-  			resultante = statement.executeQuery(query);
+                    tr = statement.executeQuery(query);
 
-  			 doctordp = new DoctorDP();
-  			while(tr.next())
-  			{
-          doctordp.setClave(tr.getString("clave"));
-          doctordp.setNombre(tr.getString("nombre"));
-          doctordp.setEspecialidad(tr.getString("especialidad"));
-          doctordp.setDireccion(tr.getString("direccion"));
-          doctordp.setTelefono(tr.getString("telefono"));
-          datos = datos + doctordp.toString() + "\n";
-  			}
+                    doctordp = new DoctorDP();
+  		while(tr.next())
+  		{
+                   doctordp.setClave(tr.getString("clave"));
+                   doctordp.setNombre(tr.getString("nombre"));
+                   doctordp.setEspecialidad(tr.getString("especialidad"));
+                   doctordp.setDireccion(tr.getString("direccion"));
+                   doctordp.setTelefono(tr.getString("telefono"));
+                    datos = datos + doctordp.toString() + "\n";
+  		}
 
-  			statement.close();
-  			System.out.println(query);
+                    statement.close();
+                    System.out.println(query);
   		}
   		catch(SQLException sql)
   		{
