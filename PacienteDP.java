@@ -62,11 +62,13 @@ public class PacienteDP
         this.telefono = telefono;
     }
 
-    public String toStringSql(){
+    public String toStringSql()
+    {
     	return "'"+this.clave + "','" + this.nombre + "'," + this.direccion + "," + this.telefono+"'";
     }
 
-    public String toString(){
+    public String toString()
+    {
     	return this.clave + "_" + this.nombre + "_" + this.direccion + "_" + this.telefono;
     }
 }
