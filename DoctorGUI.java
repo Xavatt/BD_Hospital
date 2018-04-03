@@ -119,6 +119,6 @@ public class DoctorGUI extends JFrame implements ActionListener
 
     public static void main(String args[])
     {
-      new DoctorGUI();
+        new DoctorGUI();
     }
 }

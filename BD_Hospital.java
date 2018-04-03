@@ -61,6 +61,10 @@ public class BD_Hospital extends JFrame implements ActionListener
           * 3.- Colocar los objetos de los atributos en los JPanels correspondientes
           */
     }
+      public void actionPerformed(ActionEvent e)
+      {
+          
+      }
 
 //    public static void main(String[] args)
 //    {
