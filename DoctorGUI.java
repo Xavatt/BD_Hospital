@@ -1,5 +1,12 @@
 package bd_hospital;
 
+/**
+ * Librerias
+ */
+
+ import javax.swing.*;
+ import java.awt.*;
+ import java.awt.event.*;
 
 public class DoctorGUI extends JFrame implements ActionListener
 {
