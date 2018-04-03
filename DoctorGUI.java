@@ -11,8 +11,8 @@ public class DoctorGUI extends JFrame implements ActionListener
     private JPanel panel1, panel2;
     private JTextArea taDatos;
 
-    public Doctor()
+    public DoctorGUI()
     {
-      
+
     }
 }

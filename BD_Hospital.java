@@ -21,7 +21,7 @@ public class BD_Hospital extends JFrame implements ActionListener
     private JPanel panel1, panel2;
     private JTextArea taDatos;
 
-    public Hospital()
+    public BD_Hospital()
     {
         super("Hospital");
 
