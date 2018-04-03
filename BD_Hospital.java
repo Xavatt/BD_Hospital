@@ -6,6 +6,7 @@ package bd_hospital;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
@@ -61,9 +62,9 @@ public class BD_Hospital extends JFrame implements ActionListener
           */
     }
 
-    public static void main(String[] args)
-    {
-
-    }
+//    public static void main(String[] args)
+//    {
+//
+//    }
 
 }
