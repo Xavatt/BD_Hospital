@@ -64,7 +64,7 @@ public class PacienteDP
 
     public String toStringSql()
     {
-    	return "'"+this.clave + "','" + this.nombre + "'," + this.direccion + "," + this.telefono+"'";
+    	return "'"+this.clave + "','" + this.nombre + "','" + this.direccion + "','" + this.telefono+"'";
     }
 
     public String toString()
