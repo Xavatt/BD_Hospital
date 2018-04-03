@@ -4,7 +4,7 @@ package bd_hospital;
  * Librerias
  */
 
-import java.swing.*;
+import javax.swing.*;
 import java.awt.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
