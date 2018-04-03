@@ -89,6 +89,34 @@ public class DoctorGUI extends JFrame implements ActionListener
 
     }
 
+    public void actionPerformed(ActionEvent e)
+    {
+      if (e.getSource() == bCapturar)
+      {
+
+      }
+
+      if (e.getSource() == bConsultar)
+      {
+
+      }
+
+      if (e.getSource() == bConsultarCve)
+      {
+
+      }
+
+      if (e.getSource() == bConsultarEspecialidad)
+      {
+
+      }
+
+      if (e.getSource() == bSalir)
+      {
+        System.exit(0);
+      }
+    }
+
     public static void main(String args[])
     {
       new DoctorGUI();
