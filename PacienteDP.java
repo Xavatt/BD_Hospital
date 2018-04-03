@@ -3,7 +3,8 @@ package bd_hospital;
 
 import java.util.StringTokenizer;
 
-public class PacienteDP {
+public class PacienteDP
+{
     private String clave, nombre, direccion, telefono;
 
     public PacienteDP()
@@ -12,7 +13,7 @@ public class PacienteDP {
         this.nombre = "";
         this.direccion = "";
     }
-    
+
     public PacienteDP(String datos)
     {
         StringTokenizer st = new StringTokenizer(datos, "_");
@@ -20,10 +21,10 @@ public class PacienteDP {
         nombre = st.nextToken();
         direccion = st.nextToken();
         telefono = st.nextToken();
-        
+
     }
-    
-    
+
+
     public String getClave() {
         return clave;
     }
@@ -41,30 +42,30 @@ public class PacienteDP {
         this.nombre = nombre;
     }
 
-    public String getDireccion() 
+    public String getDireccion()
     {
         return direccion;
     }
 
-    public void setDireccion(String direccion) 
+    public void setDireccion(String direccion)
     {
         this.direccion = direccion;
     }
 
-    public String getTelefono() 
+    public String getTelefono()
     {
         return telefono;
     }
 
-    public void setTelefono(String telefono) 
+    public void setTelefono(String telefono)
     {
         this.telefono = telefono;
-    }    
-    
+    }
+
     public String toStringSql(){
     	return "'"+this.clave + "','" + this.nombre + "'," + this.direccion + "," + this.telefono+"'";
     }
-    
+
     public String toString(){
     	return this.clave + "_" + this.nombre + "_" + this.direccion + "_" + this.telefono;
     }
