@@ -26,6 +26,11 @@ public class DoctorGUI extends JFrame implements ActionListener
        * 1.- Crear los objetos de los atributos
        */
 
+       tfClave = new JTextField();
+       tfNombre = new JTextField();
+       tfEspecialidad = new JTextField();
+       tfDireccion = new JTextField();
+       tfTelefono = new JTextField();
       /* Botones */
       bCapturar = new JButton("Capturar");
       bConsultar = new JButton("Consulta General");
@@ -49,7 +54,7 @@ public class DoctorGUI extends JFrame implements ActionListener
       /**
        * 2.- Definir los Layouts de los JPanels
        */
-       panel1.setLayout(new GridLayout(13,2));
+       panel1.setLayout(new GridLayout(8,2));
        panel2.setLayout(new FlowLayout());
 
       /**
@@ -119,6 +124,6 @@ public class DoctorGUI extends JFrame implements ActionListener
 
     public static void main(String[] args)
     {
-        new DoctorGUI();
+        DoctorGUI doctorGUI = new DoctorGUI();
     }
 }
