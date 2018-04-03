@@ -31,7 +31,7 @@ public class DoctorGUI extends JFrame implements ActionListener
       bConsultar = new JButton("Consulta General");
       bConsultarCve = new JButton("Consulta por Clave");
       bConsultarEspecialidad = new JButton("Consulta por especialidad");
-      bSalir = new JButton = new JButton("Exit");
+      bSalir  = new JButton("Exit");
 
       /* Panels & Datos */
       panel1 = new JPanel();
