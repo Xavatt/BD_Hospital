@@ -99,6 +99,42 @@ public class HospitalAD
         return datos;
     }
 
+    public String consultarClave(String clave)
+  	{
+  		String datos="";
+  		String query="";
+  		ResultSet tr = null;
+  		query="SELECT * FROM Doctor WHERE CLAVE = '"+clave+"'";
+
+  		try
+  		{
+                    statement = conexion.createStatement();
+
+                    tr = statement.executeQuery(query);
+
+                    doctordp = new DoctorDP();
+  		while(tr.next())
+  		{
+                   doctordp.setClave(tr.getString("clave"));
+                   doctordp.setNombre(tr.getString("nombre"));
+                   doctordp.setEspecialidad(tr.getString("especialidad"));
+                   doctordp.setDireccion(tr.getString("direccion"));
+                   doctordp.setTelefono(tr.getString("telefono"));
+                    datos = datos + doctordp.toString() + "\n";
+  		}
+
+                    statement.close();
+                    System.out.println(query);
+  		}
+  		catch(SQLException sql)
+  		{
+  			System.out.println("Error: "+sql);
+  			datos = "Error en lectura de base datos...";
+  		}
+
+  		return datos;
+    }
+    
     public String consultarEspecialidad(String especialidad)
   	{
   		String datos="";

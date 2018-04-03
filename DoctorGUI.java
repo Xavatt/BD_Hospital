@@ -137,7 +137,13 @@ public class DoctorGUI extends JFrame implements ActionListener
 
       if (e.getSource() == bConsultarCve)
       {
-
+          String clave = tfClave.getText();
+          respuesta = hospitalad.consultarClave(clave);
+          if(respuesta.equals("VACIO"))
+          {
+            respuesta = "Clave no encontrada"+clave;
+          }
+          taDatos.setText(respuesta);
       }
 
       if (e.getSource() == bConsultarEspecialidad)
