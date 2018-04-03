@@ -1,7 +1,8 @@
-
 package bd_hospital;
 
-//Librerias
+/**
+ * Liberias
+ */
  import javax.swing.*;
  import java.awt.*;
  import java.awt.event.*;
@@ -18,17 +19,17 @@ public class AnalisisGUI extends JFrame implements ActionListener
 
     public AnalisisGUI()
     {
-      super("Analisis");
+      super("Analisis Clinico");
 
       /**
        * 1.- Crear los objetos de los atributos
        */
 
-       tfClavePac = new JTextField();
-       tfTipo = new JTextField();
-       tfDescripcion = new JTextField();
-       tfFechaAP = new JTextField();
-       tfFechaEN = new JTextField();
+      tfClavePac = new JTextField();
+      tfTipo = new JTextField();
+      tfDescripcion = new JTextField();
+      tfFechaAP = new JTextField();
+      tfFechaEN = new JTextField();
       /* Botones */
       bCapturar = new JButton("Capturar");
       bConsultar = new JButton("Consulta General");
@@ -107,4 +108,3 @@ public class AnalisisGUI extends JFrame implements ActionListener
         AnalisisGUI analisisGUI = new AnalisisGUI();
     }
 }
-
