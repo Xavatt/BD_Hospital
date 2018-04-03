@@ -78,8 +78,8 @@ public class AtiendeGUI extends JFrame implements ActionListener
     	}
     }
     
-    public static void main(String[] args)
-    {
-    	new AtiendeGUI();
-    }
+//    public static void main(String[] args)
+//    {
+//    	new AtiendeGUI();
+//    }
 }
