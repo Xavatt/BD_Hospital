@@ -41,10 +41,17 @@ public class PacienteGUI extends JFrame implements ActionListener
         bCapturar = new JButton("Capturar");
         bConsulta = new JButton("Consulta");
         bSalir = new JButton("Salir");
-        taDatos = new JTextArea(30,45);
+        
+        /* ActionListeners */
+        bCapturar.addActionListener(this);
+        bConsulta.addActionListener(this);
+        bSalir.addActionListener(this);
+        
+       
         /* Panels & Datos */
         panel1 = new JPanel();
         panel2 = new JPanel();
+        taDatos = new JTextArea(30,45);
 
         panel1.setLayout(new GridLayout(6,2));
         panel2.setLayout(new FlowLayout());
@@ -88,10 +95,10 @@ public class PacienteGUI extends JFrame implements ActionListener
       }
     }
 
-//   public static void main(String[] args)
-//    {
-//        new PacienteGUI();
-//    }
+   public static void main(String[] args)
+    {
+        new PacienteGUI();
+    }
 
 
 }
