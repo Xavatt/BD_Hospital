@@ -139,7 +139,7 @@ public class DoctorGUI extends JFrame implements ActionListener
       {
           String clave = tfClave.getText();
           respuesta = hospitalad.consultarClave(clave);
-          if(respuesta.equals("VACIO"))
+          if(respuesta.equals("No_Localizado"))
           {
             respuesta = "Clave no encontrada"+clave;
           }
@@ -150,7 +150,7 @@ public class DoctorGUI extends JFrame implements ActionListener
       {
           String especialidad = tfEspecialidad.getText();
           respuesta = hospitalad.consultarEspecialidad(especialidad);
-          if(respuesta.equals("VACIO"))
+          if(respuesta.equals("No_Localizado"))
           {
             respuesta = "Especialidad no encontrada"+especialidad;
           }
