@@ -18,7 +18,7 @@ public class PacienteGUI extends JFrame implements ActionListener
   private JPanel panel1, panel2;
   private JTextArea taDatos;
 
-  private  HospitalAD hospitalad = new HospitalAD();
+  private HospitalAD hospitalad = new HospitalAD();
 
   public PacienteGUI()
   {
