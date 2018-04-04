@@ -62,6 +62,25 @@ public class HospitalAD
         return datos;
       }
 
+      public String capturarAnalisis(String datos)
+      {
+        //System.out.println("\nAD: "+datos);
+        pacientedp = new PacienteDP(datos);
+        String query = "INSERT INTO AnalisisC VALUES("+analisisdp.toStringSql()+")";
+
+        try {
+            statement = conexion.createStatement();
+            statement.executeUpdate(query);
+            statement.close();
+            datos = "Datos capturados: "+query;
+            System.out.println(query);
+        }
+        catch (SQLException sqle) {
+            datos ="Error capturar datos " + sqle;
+        }
+        return datos;
+      }
+
       public String capturarPaciente(String datos)
       {
         //System.out.println("\nAD: "+datos);
@@ -80,6 +99,41 @@ public class HospitalAD
         }
         return datos;
       }
+
+      public String consultarAnalisis()
+      {
+        String datos="";
+        ResultSet tr;
+        String query = "SELECT * FROM AnalisisC";
+
+        try
+        {
+          // 1. Abrir el archivo de datos o BD
+          statement = conexion.createStatement();
+          // Ejecutar Query
+          tr = statement.executeQuery(query);
+          // 2. Procesar los datos en el archivo
+          analisisdp = new AnalisisDP(datos);
+          while(tr.next())
+            {
+              analisisdp.setTipo(tr.getString("tipo"));
+              analisisdp.setDescripcion(tr.getString("descripcion"));
+              analisisdp.setFechaAplicacion(tr.getString("fechaAP"));
+              analisisdp.setFechaEntrega(tr.getString("fechaEN"));
+              analisisdp.setNoPaciente(tr.getString("No. paciente"));
+              datos = datos + pacientedp.toString() + "\n";
+            }
+          // 3. Cerrar el archivo
+          statement.close();
+          tr.close();
+          System.out.println(query);
+          }
+          catch(SQLException sqle)
+          {
+            datos = "Error: "+sqle;
+          }
+            return datos;
+        }
 
 
     public String consultarPacientes()

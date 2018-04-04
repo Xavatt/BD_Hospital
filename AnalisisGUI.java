@@ -17,6 +17,8 @@ public class AnalisisGUI extends JFrame implements ActionListener
     private JPanel panel1, panel2;
     private JTextArea taDatos;
 
+    private HospitalAD hospitalad = new HospitalAD();
+
     public AnalisisGUI()
     {
       super("Analisis Clinico");
@@ -85,16 +87,42 @@ public class AnalisisGUI extends JFrame implements ActionListener
 
     }
 
+    private String obtenerDatos()
+  {
+    String datos= "";
+    String clave = tfClavePac.getText();
+    String tipo = tfTipo.getText();
+    String fechaAP = tfFechaAP.getText();
+    String fechaEN = tfFechaEN.getText();
+
+    if(clave.equals("") || tipo.equals("") || fechaAP.equals("") || fechaEN.equals(""))
+      datos = "VACIO";
+      else
+      {
+          datos = clave+"_"+tipo+"_"+fechaAP+"_"+fechaEN;
+      }
+      return datos;
+  }
+
     public void actionPerformed(ActionEvent e)
     {
+       String datos,respuesta;
       if (e.getSource() == bCapturar)
       {
-
+        datos = obtenerDatos();
+        if(datos.equals("VACIO"))
+        respuesta = "Algun campo esta vacio...";
+        else
+        {
+          respuesta = hospitalad.capturarAnalisis(datos);
+        }
+        taDatos.setText(respuesta);
       }
 
       if (e.getSource() == bConsultar)
       {
-
+        datos = hospitalad.consultarAnalisis();
+        taDatos.setText(datos);
       }
 
       if (e.getSource() == bSalir)
