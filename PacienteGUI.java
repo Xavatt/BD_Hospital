@@ -10,91 +10,126 @@ package bd_hospital;
 
 public class PacienteGUI extends JFrame implements ActionListener
 {
+  /**
+  * Definir atributos que se van a ocupar
+  */
+  private JTextField tfClave, tfNombre, tfDireccion, tfTelefono;
+  private JButton bCapturar, bConsultar,bSalir;
+  private JPanel panel1, panel2;
+  private JTextArea taDatos;
+
+  private HospitalAD hospitalad = new HospitalAD();
+
+  public PacienteGUI()
+  {
+    super("Paciente");
+
     /**
-    * Definir atributos que se van a ocupar
-    */
-    private JLabel labelClave, labelNombre, labelDireccion, labelTelefono;
-    private JTextField tfClave, tfNombre,tfDireccion, tfTelefono;
-    private JButton bCapturar, bConsulta, bSalir;
-    private JTextArea taDatos;
-    private JPanel panel1, panel2;
+     * 1.- Crear los objetos de los atributos
+     */
 
-    public PacienteGUI()
+     tfClave = new JTextField();
+     tfNombre = new JTextField();
+     tfDireccion = new JTextField();
+     tfTelefono = new JTextField();
+    /* Botones */
+    bCapturar = new JButton("Capturar");
+    bConsultar = new JButton("Consulta General");
+    bSalir  = new JButton("Exit");
+
+    /* Panels & Datos */
+    panel1 = new JPanel();
+    panel2 = new JPanel();
+
+    taDatos = new JTextArea(25,35);
+
+    /* ActionListeners */
+    bCapturar.addActionListener(this);
+    bConsultar.addActionListener(this);
+    bSalir.addActionListener(this);
+
+    /**
+     * 2.- Definir los Layouts de los JPanels
+     */
+     panel1.setLayout(new GridLayout(8,2));
+     panel2.setLayout(new FlowLayout());
+
+    /**
+     * 3.- Colocar los objetos de los atributos en los JPanels correspondientes
+     */
+     panel1.add(new JLabel("CLAVE :"));
+     panel1.add(tfClave);
+     panel1.add(new JLabel("NOMBRE :"));
+     panel1.add(tfNombre);
+     panel1.add(new JLabel("DIRECCION :"));
+     panel1.add(tfDireccion);
+     panel1.add(new JLabel("TELEFONO :"));
+     panel1.add(tfTelefono);
+
+     panel1.add(bCapturar);
+     panel1.add(bConsultar);
+     panel1.add(bSalir);
+
+     panel2.add(panel1);
+     panel2.add(new JScrollPane(taDatos));
+
+     /**
+      * 4.- Adicionar el panel1 al panel1
+      */
+      add(panel2);
+      setSize(500,500);
+      setVisible(true);
+      /**
+       * 5.- Adicionar el panel2 al JFrame y hacerlo visible
+       */
+       setSize(500,500);
+       setVisible(true);
+
+  }
+
+  private String obtenerDatos()
+  {
+    String datos= "";
+    String clave = tfClave.getText();
+    String nombre = tfNombre.getText();
+    String direccion = tfDireccion.getText();
+    String telefono = tfTelefono.getText();
+
+    if(clave.equals("") || nombre.equals("") || direccion.equals("") || telefono.equals(""))
+      datos = "VACIO";
+      else
+      {
+          datos = clave+"_"+nombre+"_"+direccion+"_"+telefono;
+      }
+      return datos;
+  }
+
+  public void actionPerformed(ActionEvent e)
+  {
+    String datos,respuesta;
+    if (e.getSource() == bCapturar)
     {
-        super("Pacientes");
-
-        /**
-         * 1.- Crear los objetos de los atributos
-         */
-
-         /* JLabels */
-        labelClave = new JLabel("Clave: ");
-        labelNombre = new JLabel("Nombre: ");
-        labelDireccion = new JLabel("Dirección");
-        labelTelefono = new JLabel("Teléfono: ");
-
-        tfClave = new JTextField();
-        tfNombre = new JTextField();
-        tfDireccion = new JTextField();
-        tfTelefono = new JTextField();
-        /* Botones */
-        bCapturar = new JButton("Capturar");
-        bConsulta = new JButton("Consulta");
-        bSalir = new JButton("Salir");
-        
-        /* ActionListeners */
-        bCapturar.addActionListener(this);
-        bConsulta.addActionListener(this);
-        bSalir.addActionListener(this);
-        
-       
-        /* Panels & Datos */
-        panel1 = new JPanel();
-        panel2 = new JPanel();
-        taDatos = new JTextArea(30,45);
-
-        panel1.setLayout(new GridLayout(6,2));
-        panel2.setLayout(new FlowLayout());
-
-        panel1.add(labelClave);
-        panel1.add(tfClave);
-        panel1.add(labelNombre);
-        panel1.add(tfNombre);
-        panel1.add(labelDireccion);
-        panel1.add(tfDireccion);
-        panel1.add(labelTelefono);
-        panel1.add(tfTelefono);
-        panel1.add(bCapturar);
-        panel1.add(bConsulta);
-        panel1.add(bSalir);
-        panel2.add(panel1);
-        panel2.add(taDatos);
-
-        add(panel2);
-
-        setVisible(true);
-        setSize(600, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      datos = obtenerDatos();
+      if(datos.equals("VACIO"))
+        respuesta = "Algun campo esta vacio...";
+      else
+      {
+          respuesta = hospitalad.capturarDoctor(datos);
+      }
+      taDatos.setText(respuesta);
     }
 
-    public void actionPerformed(ActionEvent e)
+    if (e.getSource() == bConsultar)
     {
-      if (e.getSource() == bCapturar)
-      {
-
-      }
-
-      if (e.getSource() == bConsulta)
-      {
-
-      }
-
-      if (e.getSource() == bSalir)
-      {
-        System.exit(0);
-      }
+      datos = hospitalad.consultarDoctores();
+      taDatos.setText(datos);
     }
 
+    if (e.getSource() == bSalir)
+    {
+      System.exit(0);
+    }
+  }
    public static void main(String[] args)
     {
         new PacienteGUI();
