@@ -86,7 +86,7 @@ public class HospitalAD
     {
       String datos="";
       ResultSet tr;
-      String query = "SELECT * FROM Paciente";
+      String query = "SELECT * FROM paciente";
 
       try
       {
