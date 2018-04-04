@@ -12,6 +12,7 @@ public class PacienteDP
         this.clave = "";
         this.nombre = "";
         this.direccion = "";
+        this.telefono = "";
     }
 
     public PacienteDP(String datos)

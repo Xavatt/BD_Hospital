@@ -43,7 +43,8 @@ public class HospitalAD
         }
     }
 
-      public String capturarDoctor(String datos){
+      public String capturarDoctor(String datos)
+      {
         //System.out.println("\nAD: "+datos);
         doctordp = new DoctorDP(datos);
         String query = "INSERT INTO DOCTOR VALUES("+doctordp.toStringSql()+")";
@@ -59,10 +60,64 @@ public class HospitalAD
             datos ="Error capturar datos " + sqle;
         }
         return datos;
-}
+      }
+
+      public String capturarPaciente(String datos)
+      {
+        //System.out.println("\nAD: "+datos);
+        pacientedp = new PacienteDP(datos);
+        String query = "INSERT INTO PACIENTE VALUES("+pacientedp.toStringSql()+")";
+
+        try {
+            statement = conexion.createStatement();
+            statement.executeUpdate(query);
+            statement.close();
+            datos = "Datos capturados: "+query;
+            System.out.println(query);
+        }
+        catch (SQLException sqle) {
+            datos ="Error capturar datos " + sqle;
+        }
+        return datos;
+      }
+
+
+    public String consultarPacientes()
+    {
+      String datos="";
+      ResultSet tr;
+      String query = "SELECT * FROM Paciente";
+
+      try
+      {
+        // 1. Abrir el archivo de datos o BD
+        statement = conexion.createStatement();
+        // Ejecutar Query
+        tr = statement.executeQuery(query);
+        // 2. Procesar los datos en el archivo
+        pacientedp = new PacienteDP(datos);
+        while(tr.next())
+          {
+            pacientedp.setClave(tr.getString("clave"));
+            pacientedp.setNombre(tr.getString("nombre"));
+            pacientedp.setDireccion(tr.getString("direccion"));
+            pacientedp.setTelefono(tr.getString("telefono"));
+            datos = datos + pacientedp.toString() + "\n";
+          }
+        // 3. Cerrar el archivo
+        statement.close();
+        tr.close();
+        System.out.println(query);
+        }
+        catch(SQLException sqle)
+        {
+          datos = "Error: "+sqle;
+        }
+          return datos;
+      }
 
       public String consultarDoctores()
-    {
+      {
         String datos="";
         ResultSet tr;
         String query = "SELECT * FROM doctor";
@@ -97,7 +152,7 @@ public class HospitalAD
             datos = "Error: "+sqle;
         }
         return datos;
-    }
+      }
 
     public String consultarClave(String clave)
   	{
@@ -134,7 +189,7 @@ public class HospitalAD
 
   		return datos;
     }
-    
+
     public String consultarEspecialidad(String especialidad)
   	{
   		String datos="";
