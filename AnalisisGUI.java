@@ -12,7 +12,7 @@ public class AnalisisGUI extends JFrame implements ActionListener
     /**
     * Definir atributos que se van a ocupar
     */
-    private JTextField  tfClavePac, tfTipo, tfDescripcion, tfFechaAP, tfFechaEN;
+    private JTextField  tfClavePac, tfTipo, tfDescripcion, tfFechaAP, tfFechaEN, tfNoPaciente;
     private JButton bCapturar, bConsultar, bSalir;
     private JPanel panel1, panel2;
     private JTextArea taDatos;
@@ -32,6 +32,7 @@ public class AnalisisGUI extends JFrame implements ActionListener
       tfDescripcion = new JTextField();
       tfFechaAP = new JTextField();
       tfFechaEN = new JTextField();
+      tfNoPaciente = new JTextField();
       /* Botones */
       bCapturar = new JButton("Capturar");
       bConsultar = new JButton("Consulta General");
@@ -65,6 +66,8 @@ public class AnalisisGUI extends JFrame implements ActionListener
        panel1.add(tfFechaAP);
        panel1.add(new JLabel("Fecha de Entrega :"));
        panel1.add(tfFechaEN);
+       panel1.add(new JLabel("No. de Paciente :"));
+       panel1.add(tfNoPaciente);
 
        panel1.add(bCapturar);
        panel1.add(bConsultar);
@@ -94,12 +97,13 @@ public class AnalisisGUI extends JFrame implements ActionListener
     String tipo = tfTipo.getText();
     String fechaAP = tfFechaAP.getText();
     String fechaEN = tfFechaEN.getText();
+    String noPaciente = tfNoPaciente.getText();
 
-    if(clave.equals("") || tipo.equals("") || fechaAP.equals("") || fechaEN.equals(""))
+    if(clave.equals("") || tipo.equals("") || fechaAP.equals("") || fechaEN.equals("") || noPaciente.equals(""))
       datos = "VACIO";
       else
       {
-          datos = clave+"_"+tipo+"_"+fechaAP+"_"+fechaEN;
+          datos = clave+"_"+tipo+"_"+fechaAP+"_"+fechaEN+"_"+noPaciente;
       }
       return datos;
   }
@@ -131,8 +135,8 @@ public class AnalisisGUI extends JFrame implements ActionListener
       }
     }
 
-//    public static void main(String[] args)
-//    {
-//        AnalisisGUI analisisGUI = new AnalisisGUI();
-//    }
+    public static void main(String[] args)
+    {
+        AnalisisGUI analisisGUI = new AnalisisGUI();
+    }
 }
