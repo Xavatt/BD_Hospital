@@ -18,11 +18,10 @@ public class PacienteDP
     public PacienteDP(String datos)
     {
         StringTokenizer st = new StringTokenizer(datos, "_");
-        clave = st.nextToken();
-        nombre = st.nextToken();
-        direccion = st.nextToken();
-        telefono = st.nextToken();
-
+        this.clave = st.nextToken();
+        this.nombre = st.nextToken();
+        this.direccion = st.nextToken();
+        this.telefono = st.nextToken();
     }
 
 
