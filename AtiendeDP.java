@@ -3,7 +3,7 @@ package bd_hospital;
 
 import java.util.StringTokenizer;
 
-public class AtiendeDP 
+public class AtiendeDP
 {
     private String claveDoc, clavePac, fecha, diagnostico, tratamiento;
 
@@ -15,17 +15,17 @@ public class AtiendeDP
         this.diagnostico = "";
         this.tratamiento = "";
     }
-    
+
     public AtiendeDP(String datos)
     {
         StringTokenizer st = new StringTokenizer(datos, "_");
-        this.claveDoc  = st.nextToken();
-        this.clavePac = st.nextToken();
         this.fecha = st.nextToken();
         this.diagnostico = st.nextToken();
-        this.tratamiento = st.nextToken();        
+        this.tratamiento = st.nextToken();
+        this.claveDoc  = st.nextToken();
+        this.clavePac = st.nextToken();
     }
-    
+
     public String getClaveDoc() {
         return claveDoc;
     }
@@ -64,14 +64,13 @@ public class AtiendeDP
 
     public void setTratamiento(String tratamiento) {
         this.tratamiento = tratamiento;
-    }    
-    
-     public String toStringSql(){
-    	return "'"+this.claveDoc + "','" + this.clavePac + "','" + this.fecha + "','" + this.diagnostico +"','" +this.tratamiento+"'";
     }
-    
+
+     public String toStringSql(){
+    	return "'"+this.fecha + "','" + this.diagnostico + "','" + this.tratamiento + "','" + this.claveDoc +"','" +this.clavePac+"'";
+    }
+
     public String toString(){
-    	return this.claveDoc + "_" + this.clavePac + "_" + this.fecha + "_" + this.diagnostico + "_" + this.tratamiento;
+    	return this.fecha + "_" + this.diagnostico + "_" + this.tratamiento + "_" + this.claveDoc + "_" + this.clavePac;
     }
 }
-

@@ -39,16 +39,16 @@ public class AtiendeGUI extends JFrame implements ActionListener
 		panel1.setLayout(new GridLayout(8,2));
 		panel2.setLayout(new FlowLayout());
 
+	  panel1.add(new JLabel("Fecha"));
+		panel1.add(tfFecha);
+    panel1.add(new JLabel("Diagnostico"));
+		panel1.add(tfDiagnostico);
+    panel1.add(new JLabel("Tratamiento"));
+		panel1.add(tfTratamiento);
 		panel1.add(new JLabel("Clave del Doctor"));
 		panel1.add(tfClaveDoc);
 		panel1.add(new JLabel("Clave del Paciente"));
 		panel1.add(tfClavePac);
-		panel1.add(new JLabel("Fecha"));
-		panel1.add(tfFecha);
-		panel1.add(new JLabel("Diagnostico"));
-		panel1.add(tfDiagnostico);
-		panel1.add(new JLabel("Tratamiento"));
-		panel1.add(tfTratamiento);
 
 		panel1.add(bCapturar);
 		panel1.add(bConsultar);
@@ -71,11 +71,11 @@ public class AtiendeGUI extends JFrame implements ActionListener
       String diagnostico = tfDiagnostico.getText();
       String tratamiento = tfTratamiento.getText();
 
-      if(claveDoc.equals("") || clavePac.equals("") || fecha.equals("") || diagnostico.equals("") || tratamiento.equals(""))
+      if(fecha.equals("") || diagnostico.equals("") || tratamiento.equals("") || claveDoc.equals("") || clavePac.equals(""))
         datos = "VACIO";
         else
         {
-            datos = claveDoc+"_"+clavePac+"_"+fecha+"_"+diagnostico+"_"+tratamiento;
+            datos = fecha+"_"+diagnostico+"_"+tratamiento+"_"+claveDoc+"_"+clavePac;
         }
         return datos;
     }
