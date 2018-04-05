@@ -100,6 +100,60 @@ public class HospitalAD
         return datos;
       }
 
+      public String capturarAtiende(String datos)
+      {
+        //System.out.println("\nAD: "+datos);
+        pacientedp = new PacienteDP(datos);
+        String query = "INSERT INTO ATIENDE VALUES("+pacientedp.toStringSql()+")";
+
+        try {
+            statement = conexion.createStatement();
+            statement.executeUpdate(query);
+            statement.close();
+            datos = "Datos capturados: "+query;
+            System.out.println(query);
+        }
+        catch (SQLException sqle) {
+            datos ="Error capturar datos " + sqle;
+        }
+        return datos;
+      }
+
+      public String consultarAtiende()
+      {
+        String datos="";
+        ResultSet tr;
+        String query = "SELECT * FROM Atiende";
+
+        try
+        {
+          // 1. Abrir el archivo de datos o BD
+          statement = conexion.createStatement();
+          // Ejecutar Query
+          tr = statement.executeQuery(query);
+          // 2. Procesar los datos en el archivo
+          atiendedp = new AtiendeDP();
+          while(tr.next())
+            {
+              atiendedp.setClaveDoc(tr.getString("claveDoc"));
+              atiendedp.setClavePac(tr.getString("clavePac"));
+              atiendedp.setFecha(tr.getString("fecha"));
+              atiendedp.setDiagnostico(tr.getString("diagnostico"));
+              atiendedp.setTratamiento(tr.getString("tratamiento"));
+              datos = datos + pacientedp.toString() + "\n";
+            }
+          // 3. Cerrar el archivo
+          statement.close();
+          tr.close();
+          System.out.println(query);
+          }
+          catch(SQLException sqle)
+          {
+            datos = "Error: "+sqle;
+          }
+            return datos;
+        }
+
       public String consultarAnalisis()
       {
         String datos="";
@@ -145,17 +199,17 @@ public class HospitalAD
       try
       {
         // 1. Abrir el archivo de datos o BD
-          
+
         statement = conexion.createStatement();
-        
+
         // Ejecutar Query
-        
+
         tr = statement.executeQuery(query);
-        
+
         // 2. Procesar los datos en el archivo
-        
+
         pacientedp = new PacienteDP();
-        
+
         while(tr.next())
           {
             pacientedp.setClave(tr.getString("clave"));
