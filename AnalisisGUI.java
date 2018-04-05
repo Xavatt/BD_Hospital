@@ -93,17 +93,17 @@ public class AnalisisGUI extends JFrame implements ActionListener
     private String obtenerDatos()
   {
     String datos= "";
-    String clave = tfClavePac.getText();
     String tipo = tfTipo.getText();
+    String descripcion = tfDescripcion.getText();
     String fechaAP = tfFechaAP.getText();
     String fechaEN = tfFechaEN.getText();
     String noPaciente = tfNoPaciente.getText();
 
-    if(clave.equals("") || tipo.equals("") || fechaAP.equals("") || fechaEN.equals("") || noPaciente.equals(""))
+    if(  tipo.equals("") || descripcion.equals("") || fechaAP.equals("") || fechaEN.equals("") || noPaciente.equals(""))
       datos = "VACIO";
       else
       {
-          datos = clave+"_"+tipo+"_"+fechaAP+"_"+fechaEN+"_"+noPaciente;
+          datos = tipo+"_"+descripcion+"_"+fechaAP+"_"+fechaEN+"_"+noPaciente;
       }
       return datos;
   }
