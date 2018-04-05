@@ -62,6 +62,24 @@ public class AtiendeGUI extends JFrame implements ActionListener
 		setVisible(true);
     }
 
+    private String obtenerDatos()
+    {
+      String datos= "";
+      String claveDoc = tfClaveDoc.getText();
+      String clavePac = tfClavePac.getText();
+      String fecha = tfFecha.getText();
+      String diagnostico = tfDiagnostico.getText();
+      String tratamiento = tfTratamiento.getText();
+
+      if(claveDoc.equals("") || clavePac.equals("") || fecha.equals("") || diagnostico.equals("") || tratamiento.equals(""))
+        datos = "VACIO";
+        else
+        {
+            datos = claveDoc+"_"+clavePac+"_"+fecha+"_"+diagnostico+"_"+tratamiento;
+        }
+        return datos;
+    }
+
     public void actionPerformed(ActionEvent e)
     {
       String datos, respuesta;
