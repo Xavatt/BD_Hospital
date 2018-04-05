@@ -66,7 +66,7 @@ public class HospitalAD
       {
         //System.out.println("\nAD: "+datos);
         pacientedp = new PacienteDP(datos);
-        String query = "INSERT INTO AnalisisC VALUES("+analisisdp.toStringSql()+")";
+        String query = "INSERT INTO ANALISISC VALUES("+analisisdp.toStringSql()+")";
 
         try {
             statement = conexion.createStatement();
@@ -113,7 +113,7 @@ public class HospitalAD
           // Ejecutar Query
           tr = statement.executeQuery(query);
           // 2. Procesar los datos en el archivo
-          analisisdp = new AnalisisDP(datos);
+          analisisdp = new AnalisisDP();
           while(tr.next())
             {
               analisisdp.setTipo(tr.getString("tipo"));
@@ -145,11 +145,17 @@ public class HospitalAD
       try
       {
         // 1. Abrir el archivo de datos o BD
+          
         statement = conexion.createStatement();
+        
         // Ejecutar Query
+        
         tr = statement.executeQuery(query);
+        
         // 2. Procesar los datos en el archivo
-        pacientedp = new PacienteDP(datos);
+        
+        pacientedp = new PacienteDP();
+        
         while(tr.next())
           {
             pacientedp.setClave(tr.getString("clave"));
