@@ -72,14 +72,14 @@ public class AtiendeGUI extends JFrame implements ActionListener
           respuesta = "Algun campo esta vacio...";
         else
         {
-            respuesta = hospitalad.capturarDoctor(datos);
+            respuesta = hospitalad.capturarAnalisis(datos);
         }
         taDatos.setText(respuesta);
     	}
 
     	if (e.getSource() == bConsultar)
     	{
-        datos = hospitalad.consultarDoctores();
+        datos = hospitalad.consultarAtiende();
         taDatos.setText(datos);
     	}
 
