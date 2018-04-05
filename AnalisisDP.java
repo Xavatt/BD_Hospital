@@ -68,7 +68,7 @@ public class AnalisisDP
 
     public String toStringSql()
     {
-      return "'"+this.tipo + "','" + this.descripcion + "','" + this.fechaAplicacion + "','" + this.fechaEntrega+"','"+this.noPaciente;
+      return "'"+this.tipo + "','" + this.descripcion + "','" + this.fechaAplicacion + "','" + this.fechaEntrega+"','"+this.noPaciente+"'";
     }
 
     public String toString()
