@@ -135,8 +135,8 @@ public class AnalisisGUI extends JFrame implements ActionListener
       }
     }
 
-    public static void main(String[] args)
-    {
-        AnalisisGUI analisisGUI = new AnalisisGUI();
-    }
+//    public static void main(String[] args)
+//    {
+//        AnalisisGUI analisisGUI = new AnalisisGUI();
+//    }
 }
