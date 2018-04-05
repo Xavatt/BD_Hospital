@@ -1,8 +1,5 @@
 package bd_hospital;
 
-/**
- * Liberias
- */
  import javax.swing.*;
  import java.awt.*;
  import java.awt.event.*;
@@ -81,14 +78,14 @@ public class AnalisisGUI extends JFrame implements ActionListener
         */
         add(panel2);
         setSize(500,500);
-        setVisible(true);
-        /**
-         * 5.- Adicionar el panel2 al JFrame y hacerlo visible
-         */
-         setSize(500,500);
-         setVisible(true);
+        setVisible(false);
 
     }
+    
+    public JPanel getPanel()
+	{
+		return this.panel2;
+	}
 
     private String obtenerDatos()
   {
@@ -131,12 +128,12 @@ public class AnalisisGUI extends JFrame implements ActionListener
 
       if (e.getSource() == bSalir)
       {
-        System.exit(0);
+        panel2.setVisible(false);
       }
     }
 
-//    public static void main(String[] args)
+//   public static void main(String[] args)
 //    {
-//        AnalisisGUI analisisGUI = new AnalisisGUI();
+//      AnalisisGUI analisisGUI = new AnalisisGUI();
 //    }
 }

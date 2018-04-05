@@ -59,8 +59,13 @@ public class AtiendeGUI extends JFrame implements ActionListener
 
 		add(panel2);
 		setSize(500,500);
-		setVisible(true);
+		setVisible(false);
     }
+    
+    public JPanel getPanel()
+	{
+		return this.panel2;
+	}
 
     private String obtenerDatos()
     {
@@ -90,7 +95,7 @@ public class AtiendeGUI extends JFrame implements ActionListener
           respuesta = "Algun campo esta vacio...";
         else
         {
-            respuesta = hospitalad.capturarAnalisis(datos);
+            respuesta = hospitalad.capturarAtiende(datos);
         }
         taDatos.setText(respuesta);
     	}
@@ -103,12 +108,12 @@ public class AtiendeGUI extends JFrame implements ActionListener
 
     	if (e.getSource() == bSalir)
     	{
-    		System.exit(0);
+    		panel2.setVisible(false);
     	}
     }
 
-    public static void main(String[] args)
-    {
-    	new AtiendeGUI();
-    }
+//    public static void main(String[] args)
+//    {
+//    	new AtiendeGUI();
+//    }
 }

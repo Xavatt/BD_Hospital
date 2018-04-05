@@ -65,7 +65,7 @@ public class HospitalAD
       public String capturarAnalisis(String datos)
       {
         //System.out.println("\nAD: "+datos);
-        pacientedp = new PacienteDP(datos);
+        analisisdp= new AnalisisDP(datos);
         String query = "INSERT INTO ANALISISC VALUES("+analisisdp.toStringSql()+")";
 
         try {
@@ -99,12 +99,11 @@ public class HospitalAD
         }
         return datos;
       }
-
       public String capturarAtiende(String datos)
       {
         //System.out.println("\nAD: "+datos);
-        pacientedp = new PacienteDP(datos);
-        String query = "INSERT INTO ATIENDE VALUES("+pacientedp.toStringSql()+")";
+        atiendedp = new AtiendeDP(datos);
+        String query = "INSERT INTO ATIENDE VALUES("+atiendedp.toStringSql()+")";
 
         try {
             statement = conexion.createStatement();
@@ -118,7 +117,6 @@ public class HospitalAD
         }
         return datos;
       }
-
       public String consultarAtiende()
       {
         String datos="";
@@ -140,7 +138,7 @@ public class HospitalAD
               atiendedp.setFecha(tr.getString("fecha"));
               atiendedp.setDiagnostico(tr.getString("diagnostico"));
               atiendedp.setTratamiento(tr.getString("tratamiento"));
-              datos = datos + pacientedp.toString() + "\n";
+              datos = datos + atiendedp.toString() + "\n";
             }
           // 3. Cerrar el archivo
           statement.close();
@@ -170,12 +168,12 @@ public class HospitalAD
           analisisdp = new AnalisisDP();
           while(tr.next())
             {
-              analisisdp.setTipo(tr.getString("tipo"));
-              analisisdp.setDescripcion(tr.getString("descripcion"));
-              analisisdp.setFechaAplicacion(tr.getString("fechaAP"));
-              analisisdp.setFechaEntrega(tr.getString("fechaEN"));
-              analisisdp.setNoPaciente(tr.getString("No. paciente"));
-              datos = datos + pacientedp.toString() + "\n";
+              analisisdp.setTipo(tr.getString(1));
+              analisisdp.setDescripcion(tr.getString(2));
+              analisisdp.setFechaAplicacion(tr.getString(3));
+              analisisdp.setFechaEntrega(tr.getString(4));
+              analisisdp.setNoPaciente(tr.getString(5));
+              datos = datos + analisisdp.toString() + "\n";
             }
           // 3. Cerrar el archivo
           statement.close();
