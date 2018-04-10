@@ -45,6 +45,9 @@ public class HospitalAD
         }
     }
 
+/**
+ *  CAPTURAS
+ */
       public String capturarDoctor(String datos)
       {
         //System.out.println("\nAD: "+datos);
@@ -119,6 +122,10 @@ public class HospitalAD
         }
         return datos;
       }
+
+      /**
+       * CONSULTAS
+       */
       public String consultarAtiende()
       {
         String datos="";
@@ -135,11 +142,11 @@ public class HospitalAD
           atiendedp = new AtiendeDP();
           while(tr.next())
             {
-              atiendedp.setClaveDoc(tr.getString("claveDoc"));
-              atiendedp.setClavePac(tr.getString("clavePac"));
-              atiendedp.setFecha(tr.getString("fecha"));
-              atiendedp.setDiagnostico(tr.getString("diagnostico"));
-              atiendedp.setTratamiento(tr.getString("tratamiento"));
+              atiendedp.setClaveDoc(tr.getString(1));
+              atiendedp.setClavePac(tr.getString(2));
+              atiendedp.setFecha(tr.getString(3));
+              atiendedp.setDiagnostico(tr.getString(4));
+              atiendedp.setTratamiento(tr.getString(5));
               datos = datos + atiendedp.toString() + "\n";
             }
           // 3. Cerrar el archivo
@@ -198,24 +205,16 @@ public class HospitalAD
 
       try
       {
-        // 1. Abrir el archivo de datos o BD
-
         statement = conexion.createStatement();
-
-        // Ejecutar Query
-
         tr = statement.executeQuery(query);
-
         // 2. Procesar los datos en el archivo
-
         pacientedp = new PacienteDP();
-
         while(tr.next())
           {
-            pacientedp.setClave(tr.getString("clave"));
-            pacientedp.setNombre(tr.getString("nombre"));
-            pacientedp.setDireccion(tr.getString("direccion"));
-            pacientedp.setTelefono(tr.getString("telefono"));
+            pacientedp.setClave(tr.getString(1));
+            pacientedp.setNombre(tr.getString(2));
+            pacientedp.setDireccion(tr.getString(3));
+            pacientedp.setTelefono(tr.getString(4));
             datos = datos + pacientedp.toString() + "\n";
           }
         // 3. Cerrar el archivo
@@ -249,11 +248,11 @@ public class HospitalAD
             doctordp = new DoctorDP();
             while(tr.next())
             {
-                doctordp.setClave(tr.getString("clave"));
-                doctordp.setNombre(tr.getString("nombre"));
-                doctordp.setEspecialidad(tr.getString("especialidad"));
-                doctordp.setDireccion(tr.getString("direccion"));
-                doctordp.setTelefono(tr.getString("telefono"));
+                doctordp.setClave(tr.getString(1));
+                doctordp.setNombre(tr.getString(2));
+                doctordp.setEspecialidad(tr.getString(3));
+                doctordp.setDireccion(tr.getString(4));
+                doctordp.setTelefono(tr.getString(5));
                 datos = datos + doctordp.toString() + "\n";
             }
             // 3. Cerrar el archivo
@@ -277,23 +276,20 @@ public class HospitalAD
 
   		try
   		{
-                    statement = conexion.createStatement();
-
-                    tr = statement.executeQuery(query);
-
-                    doctordp = new DoctorDP();
+        statement = conexion.createStatement();
+        tr = statement.executeQuery(query);
+        doctordp = new DoctorDP();
   		while(tr.next())
   		{
-                   doctordp.setClave(tr.getString("clave"));
-                   doctordp.setNombre(tr.getString("nombre"));
-                   doctordp.setEspecialidad(tr.getString("especialidad"));
-                   doctordp.setDireccion(tr.getString("direccion"));
-                   doctordp.setTelefono(tr.getString("telefono"));
-                    datos = datos + doctordp.toString() + "\n";
+        doctordp.setClave(tr.getString(1));
+        doctordp.setNombre(tr.getString(2));
+        doctordp.setEspecialidad(tr.getString(3));
+        doctordp.setDireccion(tr.getString(4));
+        doctordp.setTelefono(tr.getString(5));
+        datos = datos + doctordp.toString() + "\n";
   		}
-
-                    statement.close();
-                    System.out.println(query);
+        statement.close();
+        System.out.println(query);
   		}
   		catch(SQLException sql)
   		{
@@ -310,26 +306,22 @@ public class HospitalAD
   		String query="";
   		ResultSet tr = null;
   		query="SELECT * FROM Doctor WHERE ESPECIALIDAD = '"+especialidad+"'";
-
   		try
   		{
-                    statement = conexion.createStatement();
-
-                    tr = statement.executeQuery(query);
-
-                    doctordp = new DoctorDP();
+        statement = conexion.createStatement();
+        tr = statement.executeQuery(query);
+        doctordp = new DoctorDP();
   		while(tr.next())
   		{
-                   doctordp.setClave(tr.getString("clave"));
-                   doctordp.setNombre(tr.getString("nombre"));
-                   doctordp.setEspecialidad(tr.getString("especialidad"));
-                   doctordp.setDireccion(tr.getString("direccion"));
-                   doctordp.setTelefono(tr.getString("telefono"));
-                    datos = datos + doctordp.toString() + "\n";
+        doctordp.setClave(tr.getString(1));
+        doctordp.setNombre(tr.getString(2));
+        doctordp.setEspecialidad(tr.getString(3));
+        doctordp.setDireccion(tr.getString(4));
+        doctordp.setTelefono(tr.getString(5));
+        datos = datos + doctordp.toString() + "\n";
   		}
-
-                    statement.close();
-                    System.out.println(query);
+        statement.close();
+        System.out.println(query);
   		}
   		catch(SQLException sql)
   		{
@@ -339,21 +331,24 @@ public class HospitalAD
 
   		return datos;
   	}
-    
+
+/**
+ * CONSULTA ANALISIS
+ */
      public String consultarReportDoc()
       {
         String datos="";
         ResultSet tr;
         String query = "SELECT Doctor.clave, Doctor.nombre, Doctor.especialidad, Paciente.clave, Paciente.nombre FROM Doctor JOIN Atiende ON Doctor.clave=Atiende.claveDoc JOIN Paciente ON Paciente.clave=atiende.clavePac";
         docPacDp = new DocDP(datos);
-        
+
         try
         {
           // 1. Abrir el archivo de datos o BD
           statement = conexion.createStatement();
           // Ejecutar Query
           tr = statement.executeQuery(query);
-          // 2. Procesar los datos en el archivo         
+          // 2. Procesar los datos en el archivo
           while(tr.next())
             {
               docPacDp.setClaveDoc(tr.getString(1));
