@@ -49,7 +49,7 @@ public class HospitalAD
             statement = conexion.createStatement();
             statement.executeUpdate(query);
             statement.close();
-            datos = "Datos capturados: "+query;
+            datos = "Datos capturados correctamente: "+query;
             System.out.println(query);
         }
         catch (SQLException sqle) {
@@ -57,6 +57,10 @@ public class HospitalAD
         }
         return datos;
       }
+
+/**
+ * CAPTURAS
+ */
 
       public String capturarAnalisis(String datos)
       {
@@ -68,7 +72,7 @@ public class HospitalAD
             statement = conexion.createStatement();
             statement.executeUpdate(query);
             statement.close();
-            datos = "Datos capturados: "+query;
+            datos = "Datos capturados correctamente: "+query;
             System.out.println(query);
         }
         catch (SQLException sqle) {
@@ -87,7 +91,7 @@ public class HospitalAD
             statement = conexion.createStatement();
             statement.executeUpdate(query);
             statement.close();
-            datos = "Datos capturados: "+query;
+            datos = "Datos capturados correctamente: "+query;
             System.out.println(query);
         }
         catch (SQLException sqle) {
@@ -95,6 +99,7 @@ public class HospitalAD
         }
         return datos;
       }
+
       public String capturarAtiende(String datos)
       {
         //System.out.println("\nAD: "+datos);
@@ -105,7 +110,7 @@ public class HospitalAD
             statement = conexion.createStatement();
             statement.executeUpdate(query);
             statement.close();
-            datos = "Datos capturados: "+query;
+            datos = "Datos capturados correctamente: "+query;
             System.out.println(query);
         }
         catch (SQLException sqle) {
@@ -113,10 +118,15 @@ public class HospitalAD
         }
         return datos;
       }
+
+      /**
+       * CONSULTAS 
+       */
+
       public String consultarAtiende()
       {
         String datos="";
-        ResultSet tr;
+        ResultSet xs;
         String query = "SELECT * FROM Atiende";
 
         try
@@ -124,21 +134,21 @@ public class HospitalAD
           // 1. Abrir el archivo de datos o BD
           statement = conexion.createStatement();
           // Ejecutar Query
-          tr = statement.executeQuery(query);
+          xs = statement.executeQuery(query);
           // 2. Procesar los datos en el archivo
           atiendedp = new AtiendeDP();
-          while(tr.next())
+          while(xs.next())
             {
-              atiendedp.setClaveDoc(tr.getString("claveDoc"));
-              atiendedp.setClavePac(tr.getString("clavePac"));
-              atiendedp.setFecha(tr.getString("fecha"));
-              atiendedp.setDiagnostico(tr.getString("diagnostico"));
-              atiendedp.setTratamiento(tr.getString("tratamiento"));
+              atiendedp.setClaveDoc(xs.getString(1));
+              atiendedp.setClavePac(xs.getString(2));
+              atiendedp.setFecha(xs.getString(3));
+              atiendedp.setDiagnostico(xs.getString(4));
+              atiendedp.setTratamiento(xs.getString(5);
               datos = datos + atiendedp.toString() + "\n";
             }
           // 3. Cerrar el archivo
           statement.close();
-          tr.close();
+          xs.close();
           System.out.println(query);
           }
           catch(SQLException sqle)
@@ -206,10 +216,10 @@ public class HospitalAD
 
         while(tr.next())
           {
-            pacientedp.setClave(tr.getString("clave"));
-            pacientedp.setNombre(tr.getString("nombre"));
-            pacientedp.setDireccion(tr.getString("direccion"));
-            pacientedp.setTelefono(tr.getString("telefono"));
+            pacientedp.setClave(tr.getString(1));
+            pacientedp.setNombre(tr.getString(2));
+            pacientedp.setDireccion(tr.getString(3));
+            pacientedp.setTelefono(tr.getString(4));
             datos = datos + pacientedp.toString() + "\n";
           }
         // 3. Cerrar el archivo
