@@ -9,8 +9,8 @@ public class AnalisisGUI extends JFrame implements ActionListener
     /**
     * Definir atributos que se van a ocupar
     */
-    private JTextField  tfClavePac, tfTipo, tfDescripcion, tfFechaAP, tfFechaEN, tfNoPaciente;
-    private JButton bCapturar, bConsultar, bSalir;
+    private JTextField  tfClaveP, tfTipo, tfDesc, tfFechaAP, tfFechaEN, tfNoPaciente;
+    private JButton bCapturar, bConsultar, bExit;
     private JPanel panel1, panel2;
     private JTextArea taDatos;
 
@@ -24,16 +24,16 @@ public class AnalisisGUI extends JFrame implements ActionListener
        * 1.- Crear los objetos de los atributos
        */
 
-      tfClavePac = new JTextField();
+      tfClaveP = new JTextField();
       tfTipo = new JTextField();
-      tfDescripcion = new JTextField();
+      tfDesc = new JTextField();
       tfFechaAP = new JTextField();
       tfFechaEN = new JTextField();
       tfNoPaciente = new JTextField();
       /* Botones */
       bCapturar = new JButton("Capturar");
       bConsultar = new JButton("Consulta General");
-      bSalir  = new JButton("Exit");
+      bExit  = new JButton("Exit");
 
       /* Panels & Datos */
       panel1 = new JPanel();
@@ -44,7 +44,7 @@ public class AnalisisGUI extends JFrame implements ActionListener
       /* ActionListeners */
       bCapturar.addActionListener(this);
       bConsultar.addActionListener(this);
-      bSalir.addActionListener(this);
+      bExit.addActionListener(this);
 
       /**
        * 2.- Definir los Layouts de los JPanels
@@ -58,7 +58,7 @@ public class AnalisisGUI extends JFrame implements ActionListener
        panel1.add(new JLabel("Tipo de Analisis :"));
        panel1.add(tfTipo);
        panel1.add(new JLabel("Descripcion :"));
-       panel1.add(tfDescripcion);
+       panel1.add(tfDesc);
        panel1.add(new JLabel("Fecha de Aplicacion :"));
        panel1.add(tfFechaAP);
        panel1.add(new JLabel("Fecha de Entrega :"));
@@ -68,7 +68,7 @@ public class AnalisisGUI extends JFrame implements ActionListener
 
        panel1.add(bCapturar);
        panel1.add(bConsultar);
-       panel1.add(bSalir);
+       panel1.add(bExit);
 
        panel2.add(panel1);
        panel2.add(new JScrollPane(taDatos));
@@ -81,7 +81,7 @@ public class AnalisisGUI extends JFrame implements ActionListener
         setVisible(false);
 
     }
-    
+
     public JPanel getPanel()
 	{
 		return this.panel2;
@@ -91,7 +91,7 @@ public class AnalisisGUI extends JFrame implements ActionListener
   {
     String datos= "";
     String tipo = tfTipo.getText();
-    String descripcion = tfDescripcion.getText();
+    String descripcion = tfDesc.getText();
     String fechaAP = tfFechaAP.getText();
     String fechaEN = tfFechaEN.getText();
     String noPaciente = tfNoPaciente.getText();
@@ -126,7 +126,7 @@ public class AnalisisGUI extends JFrame implements ActionListener
         taDatos.setText(datos);
       }
 
-      if (e.getSource() == bSalir)
+      if (e.getSource() == bExit)
       {
         panel2.setVisible(false);
       }

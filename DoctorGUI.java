@@ -11,8 +11,8 @@ public class DoctorGUI extends JFrame implements ActionListener
     /**
     * Definir atributos que se van a ocupar
     */
-    private JTextField tfClave, tfNombre, tfEspecialidad, tfDireccion, tfTelefono;
-    private JButton bCapturar, bConsultar, bConsultarCve, bConsultarEspecialidad, bSalir;
+    private JTextField tfClave, tfNombre, tfEsp, tfDireccion, tfTel;
+    private JButton bCapturar, bConsultar, bConsultarCve, bConsultarEsp, bExit;
     private JPanel panel1, panel2;
     private JTextArea taDatos;
 
@@ -20,7 +20,7 @@ public class DoctorGUI extends JFrame implements ActionListener
 
     public DoctorGUI()
     {
-      super("Doctor");
+      super("DOCTOR");
 
       /**
        * 1.- Crear los objetos de los atributos
@@ -28,15 +28,15 @@ public class DoctorGUI extends JFrame implements ActionListener
 
        tfClave = new JTextField();
        tfNombre = new JTextField();
-       tfEspecialidad = new JTextField();
+       tfEsp = new JTextField();
        tfDireccion = new JTextField();
-       tfTelefono = new JTextField();
+       tfTel = new JTextField();
       /* Botones */
       bCapturar = new JButton("Capturar");
       bConsultar = new JButton("Consulta General");
       bConsultarCve = new JButton("Consulta por Clave");
-      bConsultarEspecialidad = new JButton("Consulta por especialidad");
-      bSalir  = new JButton("Exit");
+      bConsultarEsp = new JButton("Consulta por Especialidad");
+      bExit  = new JButton("Exit");
 
       /* Panels & Datos */
       panel1 = new JPanel();
@@ -48,8 +48,8 @@ public class DoctorGUI extends JFrame implements ActionListener
       bCapturar.addActionListener(this);
       bConsultar.addActionListener(this);
       bConsultarCve.addActionListener(this);
-      bConsultarEspecialidad.addActionListener(this);
-      bSalir.addActionListener(this);
+      bConsultarEsp.addActionListener(this);
+      bExit.addActionListener(this);
 
       /**
        * 2.- Definir los Layouts de los JPanels
@@ -65,17 +65,17 @@ public class DoctorGUI extends JFrame implements ActionListener
        panel1.add(new JLabel("NOMBRE :"));
        panel1.add(tfNombre);
        panel1.add(new JLabel("ESPECIALIDAD :"));
-       panel1.add(tfEspecialidad);
+       panel1.add(tfEsp);
        panel1.add(new JLabel("DIRECCION :"));
        panel1.add(tfDireccion);
        panel1.add(new JLabel("TELEFONO :"));
-       panel1.add(tfTelefono);
+       panel1.add(tfTel);
 
        panel1.add(bCapturar);
        panel1.add(bConsultar);
        panel1.add(bConsultarCve);
-       panel1.add(bConsultarEspecialidad);
-       panel1.add(bSalir);
+       panel1.add(bConsultarEsp);
+       panel1.add(bExit);
 
        panel2.add(panel1);
        panel2.add(new JScrollPane(taDatos));
@@ -88,7 +88,7 @@ public class DoctorGUI extends JFrame implements ActionListener
         setVisible(false);
 
     }
-    
+
     public JPanel getPanel()
 	{
 		return this.panel2;
@@ -99,9 +99,9 @@ public class DoctorGUI extends JFrame implements ActionListener
       String datos= "";
       String clave = tfClave.getText();
       String nombre = tfNombre.getText();
-      String especialidad = tfEspecialidad.getText();
+      String especialidad = tfEsp.getText();
       String direccion = tfDireccion.getText();
-      String telefono = tfTelefono.getText();
+      String telefono = tfTel.getText();
 
       if(clave.equals("") || nombre.equals("") || especialidad.equals("") || direccion.equals("") || telefono.equals(""))
         datos = "VACIO";
@@ -144,9 +144,9 @@ public class DoctorGUI extends JFrame implements ActionListener
           taDatos.setText(respuesta);
       }
 
-      if (e.getSource() == bConsultarEspecialidad)
+      if (e.getSource() == bConsultarEsp)
       {
-          String especialidad = tfEspecialidad.getText();
+          String especialidad = tfEsp.getText();
           respuesta = hospitalad.consultarEspecialidad(especialidad);
           if(respuesta.equals("No_Localizado"))
           {
@@ -155,7 +155,7 @@ public class DoctorGUI extends JFrame implements ActionListener
           taDatos.setText(respuesta);
       }
 
-      if (e.getSource() == bSalir)
+      if (e.getSource() == bExit)
       {
         panel2.setVisible(false);
       }

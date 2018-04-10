@@ -6,8 +6,8 @@ package hospital;
 
 public class AtiendeGUI extends JFrame implements ActionListener
 {
-	private JTextField 	tfClavePac, tfClaveDoc, tfFecha, tfDiagnostico, tfTratamiento;
-    private JButton 	bCapturar, bConsultar, bSalir;
+	private JTextField 	tfClaveP, tfClaveD, tfFecha, tfDiagnostico, tfTratamiento;
+    private JButton 	bCapturar, bConsultar, bExit;
     private JPanel 		panel1, panel2;
     private JTextArea 	taDatos;
 
@@ -17,15 +17,15 @@ public class AtiendeGUI extends JFrame implements ActionListener
     {
     	super("Atiende");
 
-    	tfClavePac 		= 	new JTextField();
-    	tfClaveDoc 		= 	new JTextField();
+    	tfClaveP 		= 	new JTextField();
+    	tfClaveD 		= 	new JTextField();
     	tfFecha 		= 	new JTextField();
     	tfDiagnostico 	= 	new JTextField();
     	tfTratamiento 	= 	new JTextField();
 
     bCapturar = new JButton("Capturar");
 		bConsultar = new JButton("Consulta General");
-		bSalir  = new JButton("Exit");
+		bExit  = new JButton("Exit");
 
 		taDatos = new JTextArea(25,35);
 
@@ -34,7 +34,7 @@ public class AtiendeGUI extends JFrame implements ActionListener
 
 		bCapturar.addActionListener(this);
 		bConsultar.addActionListener(this);
-		bSalir.addActionListener(this);
+		bExit.addActionListener(this);
 
 		panel1.setLayout(new GridLayout(8,2));
 		panel2.setLayout(new FlowLayout());
@@ -46,13 +46,13 @@ public class AtiendeGUI extends JFrame implements ActionListener
     panel1.add(new JLabel("Tratamiento"));
 		panel1.add(tfTratamiento);
 		panel1.add(new JLabel("Clave del Doctor"));
-		panel1.add(tfClaveDoc);
+		panel1.add(tfClaveD);
 		panel1.add(new JLabel("Clave del Paciente"));
-		panel1.add(tfClavePac);
+		panel1.add(tfClaveP);
 
 		panel1.add(bCapturar);
 		panel1.add(bConsultar);
-		panel1.add(bSalir);
+		panel1.add(bExit);
 
 		panel2.add(panel1);
 		panel2.add(new JScrollPane(taDatos));
@@ -61,7 +61,7 @@ public class AtiendeGUI extends JFrame implements ActionListener
 		setSize(500,500);
 		setVisible(false);
     }
-    
+
     public JPanel getPanel()
 	{
 		return this.panel2;
@@ -70,8 +70,8 @@ public class AtiendeGUI extends JFrame implements ActionListener
     private String obtenerDatos()
     {
       String datos= "";
-      String claveDoc = tfClaveDoc.getText();
-      String clavePac = tfClavePac.getText();
+      String claveDoc = tfClaveD.getText();
+      String clavePac = tfClaveP.getText();
       String fecha = tfFecha.getText();
       String diagnostico = tfDiagnostico.getText();
       String tratamiento = tfTratamiento.getText();
@@ -106,7 +106,7 @@ public class AtiendeGUI extends JFrame implements ActionListener
         taDatos.setText(datos);
     	}
 
-    	if (e.getSource() == bSalir)
+    	if (e.getSource() == bExit)
     	{
     		panel2.setVisible(false);
     	}
