@@ -1,5 +1,5 @@
 
-package bd_hospital;
+package hospital;
 
 import java.util.StringTokenizer;
 

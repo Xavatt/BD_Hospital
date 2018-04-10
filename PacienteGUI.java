@@ -1,4 +1,4 @@
-package bd_hospital;
+package hospital;
 
  import javax.swing.*;
  import java.awt.*;
@@ -128,10 +128,10 @@ public class PacienteGUI extends JFrame implements ActionListener
     }
   }
   
-//   public static void main(String[] args)
-//    {
-//        new PacienteGUI();
-//    }
+   /*public static void main(String[] args)
+    {
+        new PacienteGUI();
+    }*/
 
 
 }

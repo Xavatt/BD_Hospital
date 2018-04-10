@@ -1,6 +1,10 @@
-package bd_hospital;
+package hospital;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -17,6 +21,8 @@ public class HospitalAD
     private PacienteDP pacientedp = new PacienteDP();
     private AnalisisDP analisisdp = new AnalisisDP();
     private AtiendeDP  atiendedp = new AtiendeDP();
+    private DocDP docPacDp;
+    private PacDP pacAnaDP;
 
 /* Conexion */
     public HospitalAD()
@@ -49,7 +55,7 @@ public class HospitalAD
             statement = conexion.createStatement();
             statement.executeUpdate(query);
             statement.close();
-            datos = "Datos capturados correctamente: "+query;
+            datos = "Datos capturados: "+query;
             System.out.println(query);
         }
         catch (SQLException sqle) {
@@ -57,10 +63,6 @@ public class HospitalAD
         }
         return datos;
       }
-
-/**
- * CAPTURAS
- */
 
       public String capturarAnalisis(String datos)
       {
@@ -72,7 +74,7 @@ public class HospitalAD
             statement = conexion.createStatement();
             statement.executeUpdate(query);
             statement.close();
-            datos = "Datos capturados correctamente: "+query;
+            datos = "Datos capturados: "+query;
             System.out.println(query);
         }
         catch (SQLException sqle) {
@@ -91,7 +93,7 @@ public class HospitalAD
             statement = conexion.createStatement();
             statement.executeUpdate(query);
             statement.close();
-            datos = "Datos capturados correctamente: "+query;
+            datos = "Datos capturados: "+query;
             System.out.println(query);
         }
         catch (SQLException sqle) {
@@ -99,7 +101,6 @@ public class HospitalAD
         }
         return datos;
       }
-
       public String capturarAtiende(String datos)
       {
         //System.out.println("\nAD: "+datos);
@@ -110,7 +111,7 @@ public class HospitalAD
             statement = conexion.createStatement();
             statement.executeUpdate(query);
             statement.close();
-            datos = "Datos capturados correctamente: "+query;
+            datos = "Datos capturados: "+query;
             System.out.println(query);
         }
         catch (SQLException sqle) {
@@ -118,15 +119,10 @@ public class HospitalAD
         }
         return datos;
       }
-
-      /**
-       * CONSULTAS 
-       */
-
       public String consultarAtiende()
       {
         String datos="";
-        ResultSet xs;
+        ResultSet tr;
         String query = "SELECT * FROM Atiende";
 
         try
@@ -134,21 +130,21 @@ public class HospitalAD
           // 1. Abrir el archivo de datos o BD
           statement = conexion.createStatement();
           // Ejecutar Query
-          xs = statement.executeQuery(query);
+          tr = statement.executeQuery(query);
           // 2. Procesar los datos en el archivo
           atiendedp = new AtiendeDP();
-          while(xs.next())
+          while(tr.next())
             {
-              atiendedp.setClaveDoc(xs.getString(1));
-              atiendedp.setClavePac(xs.getString(2));
-              atiendedp.setFecha(xs.getString(3));
-              atiendedp.setDiagnostico(xs.getString(4));
-              atiendedp.setTratamiento(xs.getString(5);
+              atiendedp.setClaveDoc(tr.getString("claveDoc"));
+              atiendedp.setClavePac(tr.getString("clavePac"));
+              atiendedp.setFecha(tr.getString("fecha"));
+              atiendedp.setDiagnostico(tr.getString("diagnostico"));
+              atiendedp.setTratamiento(tr.getString("tratamiento"));
               datos = datos + atiendedp.toString() + "\n";
             }
           // 3. Cerrar el archivo
           statement.close();
-          xs.close();
+          tr.close();
           System.out.println(query);
           }
           catch(SQLException sqle)
@@ -216,10 +212,10 @@ public class HospitalAD
 
         while(tr.next())
           {
-            pacientedp.setClave(tr.getString(1));
-            pacientedp.setNombre(tr.getString(2));
-            pacientedp.setDireccion(tr.getString(3));
-            pacientedp.setTelefono(tr.getString(4));
+            pacientedp.setClave(tr.getString("clave"));
+            pacientedp.setNombre(tr.getString("nombre"));
+            pacientedp.setDireccion(tr.getString("direccion"));
+            pacientedp.setTelefono(tr.getString("telefono"));
             datos = datos + pacientedp.toString() + "\n";
           }
         // 3. Cerrar el archivo
@@ -343,4 +339,39 @@ public class HospitalAD
 
   		return datos;
   	}
+    
+     public String consultarReportDoc()
+      {
+        String datos="";
+        ResultSet tr;
+        String query = "SELECT Doctor.clave, Doctor.nombre, Doctor.especialidad, Paciente.clave, Paciente.nombre FROM Doctor JOIN Atiende ON Doctor.clave=Atiende.claveDoc JOIN Paciente ON Paciente.clave=atiende.clavePac";
+        docPacDp = new DocDP(datos);
+        
+        try
+        {
+          // 1. Abrir el archivo de datos o BD
+          statement = conexion.createStatement();
+          // Ejecutar Query
+          tr = statement.executeQuery(query);
+          // 2. Procesar los datos en el archivo         
+          while(tr.next())
+            {
+              docPacDp.setClaveDoc(tr.getString(1));
+              docPacDp.setNombreDoc(tr.getString(2));
+              docPacDp.setEspecialidadDoc(tr.getString(3));
+              docPacDp.setClavePac(tr.getString(4));
+              docPacDp.setNombrePac(tr.getString(5));
+              datos = datos + docPacDp.toString() + "\n";
+            }
+          // 3. Cerrar el archivo
+          statement.close();
+          tr.close();
+          System.out.println(query);
+          }
+          catch(SQLException sqle)
+          {
+            datos = "Error: "+sqle;
+          }
+            return datos;
+        }
 }

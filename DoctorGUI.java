@@ -1,4 +1,4 @@
-package bd_hospital;
+package hospital;
 /**
  * Librerias
  */
@@ -160,7 +160,7 @@ public class DoctorGUI extends JFrame implements ActionListener
         panel2.setVisible(false);
       }
     }
-
+//
 //    public static void main(String[] args)
 //    {
 //        DoctorGUI doctorGUI = new DoctorGUI();

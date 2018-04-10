@@ -1,4 +1,4 @@
-package bd_hospital;
+package hospital;
 
  import javax.swing.*;
  import java.awt.*;
