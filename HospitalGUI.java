@@ -1,13 +1,3 @@
-/**
- * @(#)HospitalGUI.java
- *
- *
- * @author 
- * @version 1.00 2018/4/3
- */
- 
-package hospital;
-
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -53,7 +43,7 @@ public class HospitalGUI extends JFrame implements ActionListener
     	miPaciente			= new JMenuItem("Altas y consultas de Pacientes");
     	miAnalisis			= new JMenuItem("Catalogo de Analisis");
         miPac_Atien_Doc                 = new JMenuItem("Doctores que atienden a pacientes");
-        miPaciente_Analisis             = new JMenuItem("Análisis realizados a pacientes");
+        miPaciente_Analisis             = new JMenuItem("AnÃ¡lisis realizados a pacientes");
     	
     	miSalir				= new JMenuItem("EXIT");
     	

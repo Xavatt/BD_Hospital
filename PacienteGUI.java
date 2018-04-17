@@ -1,6 +1,4 @@
-package hospital;
-
- import javax.swing.*;
+import javax.swing.*;
  import java.awt.*;
  import java.awt.event.*;
 
@@ -10,8 +8,8 @@ public class PacienteGUI extends JFrame implements ActionListener
   /**
   * Definir atributos que se van a ocupar
   */
-  private JTextField tfClave, tfNombre, tfDireccion, tfTel;
-  private JButton bCapturar, bConsultar,bExit;
+  private JTextField tfClave, tfNombre, tfDireccion, tfTelefono;
+  private JButton bCapturar, bConsultar,bSalir;
   private JPanel panel1, panel2;
   private JTextArea taDatos;
 
@@ -28,11 +26,11 @@ public class PacienteGUI extends JFrame implements ActionListener
      tfClave = new JTextField();
      tfNombre = new JTextField();
      tfDireccion = new JTextField();
-     tfTel = new JTextField();
+     tfTelefono = new JTextField();
     /* Botones */
     bCapturar = new JButton("Capturar");
     bConsultar = new JButton("Consulta General");
-    bExit  = new JButton("Exit");
+    bSalir  = new JButton("Exit");
 
     /* Panels & Datos */
     panel1 = new JPanel();
@@ -43,7 +41,7 @@ public class PacienteGUI extends JFrame implements ActionListener
     /* ActionListeners */
     bCapturar.addActionListener(this);
     bConsultar.addActionListener(this);
-    bExit.addActionListener(this);
+    bSalir.addActionListener(this);
 
     /**
      * 2.- Definir los Layouts de los JPanels
@@ -61,11 +59,11 @@ public class PacienteGUI extends JFrame implements ActionListener
      panel1.add(new JLabel("DIRECCION :"));
      panel1.add(tfDireccion);
      panel1.add(new JLabel("TELEFONO :"));
-     panel1.add(tfTel);
+     panel1.add(tfTelefono);
 
      panel1.add(bCapturar);
      panel1.add(bConsultar);
-     panel1.add(bExit);
+     panel1.add(bSalir);
 
      panel2.add(panel1);
      panel2.add(new JScrollPane(taDatos));
@@ -78,7 +76,7 @@ public class PacienteGUI extends JFrame implements ActionListener
       setVisible(false);
 
   }
-
+  
   public JPanel getPanel()
 	{
 		return this.panel2;
@@ -90,7 +88,7 @@ public class PacienteGUI extends JFrame implements ActionListener
     String clave = tfClave.getText();
     String nombre = tfNombre.getText();
     String direccion = tfDireccion.getText();
-    String telefono = tfTel.getText();
+    String telefono = tfTelefono.getText();
 
     if(clave.equals("") || nombre.equals("") || direccion.equals("") || telefono.equals(""))
       datos = "VACIO";
@@ -122,12 +120,12 @@ public class PacienteGUI extends JFrame implements ActionListener
       taDatos.setText(datos);
     }
 
-    if (e.getSource() == bExit)
+    if (e.getSource() == bSalir)
     {
       panel2.setVisible(false);
     }
   }
-
+  
    /*public static void main(String[] args)
     {
         new PacienteGUI();

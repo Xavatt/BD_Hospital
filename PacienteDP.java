@@ -1,5 +1,3 @@
-package hospital;
-
 
 import java.util.StringTokenizer;
 

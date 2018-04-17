@@ -1,28 +1,35 @@
-
-package hospital;
-
 import java.util.StringTokenizer;
 
 public class DocDP 
 {
-   private String claveDoc, nombreDoc, especialidadDoc, clavePac, nombrePac;
+   private String clave, nombreDoc, especialidadDoc, clavePac, nombrePac;
+    
+    public DocDP()
+    {
+        
+        this.clave = "";
+        this.nombreDoc = "";
+        this.especialidadDoc = "";
+        this.clavePac = "";
+        this.nombrePac = "";
+    }
    
        public DocDP(String datos)
     {
         StringTokenizer st = new StringTokenizer(datos, "_");
-        claveDoc = st.nextToken();
-        nombreDoc = st.nextToken();
-        especialidadDoc = st.nextToken();
-        clavePac = st.nextToken();
-        nombrePac = st.nextToken();
+        this.clave = st.nextToken();
+        this.nombreDoc = st.nextToken();
+        this.especialidadDoc = st.nextToken();
+        this.clavePac = st.nextToken();
+        this.nombrePac = st.nextToken();
     }
 
     public String getClaveDoc() {
-        return claveDoc;
+        return clave;
     }
 
     public void setClaveDoc(String claveDoc) {
-        this.claveDoc = claveDoc;
+        this.clave = claveDoc;
     }
 
     public String getNombreDoc() {
@@ -59,7 +66,7 @@ public class DocDP
        
     public String toString()
     {
-      return this.claveDoc + "_" + this.nombreDoc + "_" + this.especialidadDoc + "_" + this.clavePac + "_" +this.nombrePac;
+      return this.clave + "_" + this.nombreDoc + "_" + this.especialidadDoc + "_" + this.clavePac + "_" +this.nombrePac;
     }   
    
 }
