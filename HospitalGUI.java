@@ -3,9 +3,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.*;
-
-import java.awt.*;
+//import javax.swing.*;
+//
+//import java.awt.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -28,26 +28,25 @@ public class HospitalGUI extends JFrame implements ActionListener
         
     public HospitalGUI()
     {
-    	super("Sistema de BD Hospital");
+    	super("SISTEMA DE BD DEL HOSPITAL MILITAR");
     	
     	mbProyecto 		= new JMenuBar();
     	
-    	menuAdministracion	= new JMenu("Administracion del Hospital");
-    	menuDoctor			= new JMenu("Doctores");
-    	menuPaciente		= new JMenu("Pacientes");
-    	menuAnalisis		= new JMenu("Analisis");
-        menuConsultasReportes   = new JMenu("Consultas y Reportes");
+    	menuAdministracion	= new JMenu("ADMINISTRACION DEL HOSPITAL");
+    	menuDoctor		= new JMenu("DOCTORES");
+    	menuPaciente		= new JMenu("PACIENTES");
+    	menuAnalisis		= new JMenu("ANALISIS");
+        menuConsultasReportes   = new JMenu("CONSULTAS Y REPORTES");
     	
-    	miDoctor			= new JMenuItem("Altas y consultas de Doctores");
-    	miAtiende			= new JMenuItem("Asignacion de Doctor a Paciente");
-    	miPaciente			= new JMenuItem("Altas y consultas de Pacientes");
-    	miAnalisis			= new JMenuItem("Catalogo de Analisis");
-        miPac_Atien_Doc                 = new JMenuItem("Doctores que atienden a pacientes");
-        miPaciente_Analisis             = new JMenuItem("AnÃ¡lisis realizados a pacientes");
+    	miDoctor		= new JMenuItem("ALTAS Y CONSULTAS DE DOCTORES");
+    	miAtiende		= new JMenuItem("ASIGNACION DE DOCTOR PACIENTE");
+    	miPaciente		= new JMenuItem("ALTAS Y CONSULTAS DE PACIENTE");
+    	miAnalisis		= new JMenuItem("CATALOGO DE ANALISIS");
+        miPac_Atien_Doc         = new JMenuItem("DOCTORES QUE ATIENDEN A PACIENTES");
+        miPaciente_Analisis     = new JMenuItem("ANALISIS REALIZADOS A PACIENTES");
     	
-    	miSalir				= new JMenuItem("EXIT");
-    	
-    	panel				= new JPanel();
+    	miSalir			= new JMenuItem("EXIT");    	
+    	panel			= new JPanel();
     	
     	miDoctor.addActionListener(this);
     	miAtiende.addActionListener(this);
@@ -75,88 +74,84 @@ public class HospitalGUI extends JFrame implements ActionListener
     	mbProyecto.add(miSalir);
     	
     	setJMenuBar(mbProyecto);
-		setSize(500,510);
-		setVisible(true);
+        setSize(500,510);
+	setVisible(true);
     }
     
     private void ocultarPanel()
 	{
-		panel.setVisible(false);
+            panel.setVisible(false);
 	}
 	
     public void actionPerformed(ActionEvent evento)
     {
-        String datos,impri;
+        
     	if(evento.getSource() == miDoctor)
-		{
-			ocultarPanel();
-			panel = doctor.getPanel();
-			panel.setVisible(true);
-			add(panel);
-			
-			setVisible(true);
-		}
+            {
+                ocultarPanel();
+                panel = doctor.getPanel();
+                panel.setVisible(true);
+                add(panel);
+
+                setVisible(true);
+            }
 		
-		if(evento.getSource() == miAtiende)
-		{
-			ocultarPanel();
-			panel= atiende.getPanel();
-			panel.setVisible(true);
-			add(panel);
-			
-			setVisible(true);
-		}
+	if(evento.getSource() == miAtiende)
+            {
+                ocultarPanel();
+                panel= atiende.getPanel();
+                panel.setVisible(true);
+                add(panel);
+
+                setVisible(true);
+            }
 		
-		if(evento.getSource() == miPaciente)
-		{
-			ocultarPanel();
-			panel= paciente.getPanel();
-			panel.setVisible(true);
-			add(panel);
-			
-			setVisible(true);
-		}
+	if(evento.getSource() == miPaciente)
+            {
+                ocultarPanel();
+                panel= paciente.getPanel();
+                panel.setVisible(true);
+                add(panel);
+
+                setVisible(true);
+            }
 		
-		if(evento.getSource() == miAnalisis)
-		{
-			ocultarPanel();
-			panel= analisis.getPanel();
-			panel.setVisible(true);
-			add(panel);
-			
-			setVisible(true);
-		}
-		if(evento.getSource() == miSalir)
-		{
-			System.exit(0);
-		}
+	if(evento.getSource() == miAnalisis)
+            {
+                ocultarPanel();
+                panel= analisis.getPanel();
+                panel.setVisible(true);
+                add(panel);
+
+                setVisible(true);
+            }
+	if(evento.getSource() == miSalir)
+            {
+                System.exit(0);
+            }
+
+        if(evento.getSource() == miPac_Atien_Doc)
+            {                                       
+                ocultarPanel();                
+                panel= reportes.getPanel();              
+                panel.setVisible(true);
+                add(panel);
+                setVisible(true);
+            }
                 
-                if(evento.getSource() == miPac_Atien_Doc)
-		{                   
-                    
-			ocultarPanel();
-                        //reportes.setConsultaTaDatos(hospitalAD.consultarReportDoc());
-			panel= reportes.getPanel();
-                       // datos = hospitalAD.consultarReportDoc();
-                        
-			panel.setVisible(true);
-			add(panel);
-			setVisible(true);
-		}
-                
-                 if(evento.getSource() == miPaciente_Analisis)
-		{
-			ocultarPanel();
-			panel= reportes.getPanel();
-			panel.setVisible(true);
-			add(panel);
-			
-			setVisible(true);
-		}
+        if(evento.getSource() == miPaciente_Analisis)
+            {
+                ocultarPanel();
+                panel= reportes.getPanel();
+                panel.setVisible(true);
+                add(panel);
+
+                setVisible(true);
+            }
     }
     
    public static void main(String args[])
     {
-    	HospitalGUI objeto = new HospitalGUI();
+    	HospitalGUI hospital = new HospitalGUI();
     }
 }

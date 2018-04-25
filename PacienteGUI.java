@@ -23,10 +23,10 @@ public class PacienteGUI extends JFrame implements ActionListener
      * 1.- Crear los objetos de los atributos
      */
 
-     tfClave = new JTextField();
-     tfNombre = new JTextField();
-     tfDireccion = new JTextField();
-     tfTelefono = new JTextField();
+    tfClave = new JTextField();
+    tfNombre = new JTextField();
+    tfDireccion = new JTextField();
+    tfTelefono = new JTextField();
     /* Botones */
     bCapturar = new JButton("Capturar");
     bConsultar = new JButton("Consulta General");
@@ -78,9 +78,9 @@ public class PacienteGUI extends JFrame implements ActionListener
   }
   
   public JPanel getPanel()
-	{
-		return this.panel2;
-	}
+    {
+            return this.panel2;
+    }
 
   private String obtenerDatos()
   {
@@ -102,27 +102,28 @@ public class PacienteGUI extends JFrame implements ActionListener
   public void actionPerformed(ActionEvent e)
   {
     String datos,respuesta;
+    
     if (e.getSource() == bCapturar)
     {
-      datos = obtenerDatos();
-      if(datos.equals("VACIO"))
-        respuesta = "Algun campo esta vacio...";
-      else
-      {
-          respuesta = hospitalad.capturarPaciente(datos);
-      }
-      taDatos.setText(respuesta);
+        datos = obtenerDatos();
+        if(datos.equals("VACIO"))
+          respuesta = "Algun campo esta vacio...";
+        else
+        {
+            respuesta = hospitalad.capturarPaciente(datos);
+        }
+        taDatos.setText(respuesta);
     }
 
     if (e.getSource() == bConsultar)
     {
-      datos = hospitalad.consultarPacientes();
-      taDatos.setText(datos);
+        datos = hospitalad.consultarPacientes();
+        taDatos.setText(datos);
     }
 
     if (e.getSource() == bSalir)
     {
-      panel2.setVisible(false);
+        panel2.setVisible(false);
     }
   }
   

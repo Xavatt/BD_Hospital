@@ -22,11 +22,11 @@ public class DoctorGUI extends JFrame implements ActionListener
        * 1.- Crear los objetos de los atributos
        */
 
-       tfClave = new JTextField();
-       tfNombre = new JTextField();
-       tfEspecialidad = new JTextField();
-       tfDireccion = new JTextField();
-       tfTelefono = new JTextField();
+      tfClave = new JTextField();
+      tfNombre = new JTextField();
+      tfEspecialidad = new JTextField();
+      tfDireccion = new JTextField();
+      tfTelefono = new JTextField();
       /* Botones */
       bCapturar = new JButton("Capturar");
       bConsultar = new JButton("Consulta General");
